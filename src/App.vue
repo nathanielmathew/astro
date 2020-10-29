@@ -1,25 +1,35 @@
 <template>
   <div id="app">
     <AsteroidGrid :asteroids="asteroids" header="Near-Earth Objects" />
+    <Sunrise :sunrise="sunrise" :sunset="sunset" />
   </div>
 </template>
 
 <script>
 import AsteroidGrid from './components/Asteroids.vue'
+import Sunrise from './components/Sunrise.vue'
 import axios from 'axios'
 
 export default {
   name: 'app',
   components: {
-    AsteroidGrid
+    AsteroidGrid,
+    Sunrise
   },
   data() {
       return {
-        asteroids: []
+        asteroids: [],
+        sunrise: new Date(),
+        sunset: new Date(),
+        latitude: 40.7128,
+        longitude: 74.0060,
+        time: new Date()
       }
   },            
   created: function () {
       this.fetchAsteroids(0);
+      this.getLoc();
+      this.getSunPos();
   },
   methods: {
       fetchAsteroids: function (days=0) {
@@ -38,6 +48,25 @@ export default {
                         }
               });
       },
+      getLoc: function (){
+        var loc_apikey = 'df960888abe04b86a99cebb28c932f46';
+        var url = 'https://api.ipgeolocation.io/ipgeo?apiKey=' + loc_apikey;
+        axios.get(url)
+          .then(res => {
+            this.latitude = res.data.latitude;
+            this.longitude = res.data.longitude;
+            this.getSunPos();
+          })
+      },
+      getSunPos: function(){
+        var url = 'https://api.sunrise-sunset.org/json?lat='+ this.latitude + "&lng=" + this.longitude + "&formatted=0";
+        axios.get(url)
+        .then(res => {
+            this.sunrise = new Date(res.data.results.sunrise);
+            this.sunset = new Date(res.data.results.sunset);
+          })
+        
+      }
   }
 }
 </script>
