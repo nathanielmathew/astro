@@ -25,7 +25,10 @@
                                 {{a.close_approach_data[0].miss_distance.kilometers}} km 
                     </td> 
                 </tr> 
-        </table> 
+        
+        </table>
+            <p class="loading-text" v-cloak v-if="numAsteroids <= 0 "> Loading Asteroids...</p>  
+        
         <!-- <h1>Sunrise in 2 hours</h1> -->
     </div>
 </template>
@@ -113,6 +116,13 @@
     }
     .date-btn{
         margin: 30px;
+    }
+    .loading-text{
+        margin: auto;
+        text-align: center;
+    }
+    .NEO-container{
+        margin: 100px 0px;
     }
     @media only screen and (min-width: 500px) {
         table th{
