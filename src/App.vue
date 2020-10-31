@@ -87,9 +87,9 @@ export default {
       color: inherit;
       font-family: inherit;
       font-weight: inherit;
-      padding: 20px 40px;
+      padding: 15px 20px;
       border-radius: 60px;
-      font-size: 1em;
+      font-size: 1rem;
   }
   button:hover{
       color: #18AB39;
@@ -102,4 +102,12 @@ export default {
       color: #18AB39;
       border: 1px solid #18AB39;
   }
+  
+@media only screen and (min-width: 500px) {
+  button{
+      padding: 20px 40px;
+      border-radius: 60px;
+      font-size: 1em;
+  }
+}
 </style>
