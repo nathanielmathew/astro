@@ -1,5 +1,6 @@
 <template>
     <div class = "NEO-container"> 
+        <h1 style="fontSize: 12vw">ASTROSPACE</h1>  
         <h1>{{header}}</h1> 
         <div v-cloak v-if="numAsteroids > 0 " class="summary"> 
             <p>showing {{numAsteroids}} items</p> 
@@ -59,8 +60,11 @@
         },  
         methods: {
             getCloseApproachDate: function (a) {
-                if (a.close_approach_data.length > 0) {
-                    return new Date(a.close_approach_data[0].close_approach_date).toUTCString().split('00:00:00 GMT')[0];   
+                if (a.close_approach_data.length > 0 && a.close_approach_data[0].close_approach_date_full!=null) {
+                    return new Date(a.close_approach_data[0].close_approach_date_full + " EST").toLocaleString();   
+                }
+                else if(a.close_approach_data.length > 0 && a.close_approach_data[0].close_approach_date!=null){
+                    return new Date(a.close_approach_data[0].close_approach_date).toUTCString().split('00:00:00 GMT')[0];
                 }
                 return 'N/A';
             },
@@ -115,7 +119,7 @@
         text-align: center;
     }
     .date-btn{
-        margin: 30px;
+        margin: 50px 20px;
     }
     .loading-text{
         margin: auto;
@@ -125,6 +129,9 @@
         margin: 100px 0px;
     }
     @media only screen and (min-width: 500px) {
+        .date-btn{
+        margin: 30px;
+        }
         table th{
             font-size: 1.9em;
         }
