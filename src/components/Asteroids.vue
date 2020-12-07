@@ -1,7 +1,9 @@
 <template>
     <div class = "NEO-container"> 
+
         <h1 style="fontSize: 12vw">ASTROSPACE</h1>  
-        <h1>{{header}}</h1> 
+
+        <h1 class="NEO-title">{{header}}</h1> 
         <div v-cloak v-if="numAsteroids > 0 " class="summary"> 
             <p>showing {{numAsteroids}} items</p> 
             <p>{{closestObject}} has the smallest miss distance.</p> 
@@ -128,6 +130,9 @@
     .NEO-container{
         margin: 100px 0px;
     }
+    .NEO-title{
+        font-size: 10vw;
+    }
     @media only screen and (min-width: 500px) {
         .date-btn{
         margin: 30px;
@@ -136,7 +141,10 @@
             font-size: 1.9em;
         }
         table td{
-            font-size: 1em;
+            font-size: 1.5em;
+        }
+        .NEO-title{
+            font-size: 4em;
         }
     }
 </style>
