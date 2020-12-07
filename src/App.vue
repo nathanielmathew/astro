@@ -33,6 +33,7 @@ export default {
   },
   methods: {
       fetchAsteroids: function (days=0) {
+          this.asteroids=[]; 
           var apikey = 'lNNfzKOycBvSRvRgHNU5SXHxAYmEFQ0AxTfylr1x';
                 var start_date = new Date();
                 var end_date = new Date();
@@ -40,7 +41,6 @@ export default {
                 var url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' + start_date.toISOString().split('T')[0] + '&end_date=' + end_date.toISOString().split('T')[0] + '&api_key=' + apikey;
           axios.get(url)
               .then(res => {
-                this.asteroids=[];                                       
                   for(var i = start_date; i <= end_date; (i.setDate(i.getDate()+1))){
                             for(var j = 0; j < res.data.near_earth_objects[i.toISOString().split('T')[0]].length ; j++) {
                                 this.asteroids.push ( res.data.near_earth_objects[i.toISOString().split('T')[0]][j] );
@@ -79,7 +79,9 @@ export default {
   [v-cloak] {
     display: none;
   }
-
+  body{
+    animation: fade-in 1.5s ease-in;
+  }
   button{
       transition: 0.2s ease-out;
       border: 1px solid white;
@@ -102,7 +104,6 @@ export default {
       color: #18AB39;
       border: 1px solid #18AB39;
   }
-  
 @media only screen and (min-width: 500px) {
   button{
       padding: 20px 40px;
