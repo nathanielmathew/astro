@@ -1,8 +1,8 @@
 <template>
     <div class="sunrise-container">
         <img src="../assets/sunrise.png" />
-        <h1 v-cloak v-if="time<sunset">Sunset at {{(sunset.toLocaleTimeString())}}</h1>
-        <h1 v-cloak v-else>Sunrise at <br /> <h2 class="sun-time">{{(sunrise.toLocaleTimeString())}}</h2></h1>
+        <h1 v-cloak v-if="time<sunset">Upcoming Sunset at {{(sunset.toLocaleTimeString())}}</h1>
+        <h1 v-cloak v-else>Upcoming Sunrise at <br /> <h2 class="sun-time">{{(sunrise.toLocaleTimeString())}}</h2></h1>
     </div>
 </template>
 
