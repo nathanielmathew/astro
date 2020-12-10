@@ -1,6 +1,6 @@
 
 <a align="center" href="https://astrospace.netlify.com">
-<img src="src/assets/markdown.jpg /" alt="ASTROSPACE" >
+<img src="https://raw.githubusercontent.com/nathanielmathew/astro/master/src/assets/markdown.JPG?token=AFJ7P3KNXLDXQ736NACWBTS73OEBU" alt="ASTROSPACE" >
 </a>
 ##
 Astrospace is a one stop destination for astro enthusiasts all over the world. It can be used to find useful information related to the night sky that may help while you're out stargazing. Astrospace will show you potential Shooting Stars in the night sky, the time that they may appear, their distance from the earth, the time you have left to stargaze until the sun rises, or time remaining until the sun sets, the current phase of the moon and information about it, and a lot more!
