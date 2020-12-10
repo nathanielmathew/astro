@@ -2,19 +2,22 @@
   <div id="app">
     <AsteroidGrid :asteroids="asteroids" header="Near-Earth Objects" />
     <Sunrise :sunrise="sunrise" :sunset="sunset" />
+    <Moon :moonphase="moonphase" />
   </div>
 </template>
 
 <script>
 import AsteroidGrid from './components/Asteroids.vue'
 import Sunrise from './components/Sunrise.vue'
+import Moon from './components/Moon.vue'
 import axios from 'axios'
 
 export default {
   name: 'app',
   components: {
     AsteroidGrid,
-    Sunrise
+    Sunrise,
+    Moon
   },
   data() {
       return {
@@ -23,13 +26,15 @@ export default {
         sunset: new Date(),
         latitude: 40.7128,
         longitude: 74.0060,
-        time: new Date()
+        time: new Date(),
+        moonphase: -1
       }
   },            
   created: function () {
       this.fetchAsteroids(0);
       this.getLoc();
       this.getSunPos();
+      this.getMoonPhase();
   },
   methods: {
       fetchAsteroids: function (days=0) {
@@ -66,6 +71,13 @@ export default {
             this.sunset = new Date(res.data.results.sunset);
           })
         
+      },
+      getMoonPhase: function(){
+        var url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&includeAstronomy=true&combinationMethod=aggregate&contentType=json&unitGroup=us&locationMode=single&key=1PYNQ6AWUDJE9AFERDCHJHSXK&locations=Sterling%2C%20VA%2C%20US';
+        axios.get(url)
+        .then(res => {
+            this.moonphase = parseFloat(res.data.location.values[0].moonphase);
+          })
       }
   }
 }
