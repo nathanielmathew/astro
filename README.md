@@ -5,7 +5,7 @@
 
 ##
 
-Astrospace is a one-stop destination for Astro enthusiasts all over the world. It can be used to find useful information related to the night sky that may help while you're out stargazing. Astrospace will show you potential Shooting Stars in the night sky, the time that they may appear, their distance from the earth, the time you have left to stargaze until the sun rises, or time remaining until the sun sets, the current phase of the moon and information about it, and a lot more!
+Astrospace is a destination for Astro enthusiasts all over the world which can be used to find useful information related to the night sky that may help while you're out stargazing. Astrospace will show you potential Shooting Stars in the night sky along with the time that they may appear, their distance from the earth, the time you have left to stargaze until the sun rises, or time remaining until the sun sets, the current phase of the moon and information about it, and a lot more!
 
 This Web Application was built using Vue and makes use of several APIs to function. It is the perfect companion for stargazers on a night of stargazing.
 
